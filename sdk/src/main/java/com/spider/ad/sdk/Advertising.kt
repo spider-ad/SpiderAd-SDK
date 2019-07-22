@@ -2,13 +2,15 @@ package com.spider.ad.sdk
 
 import android.content.Context
 import android.os.AsyncTask
-import android.widget.TextView
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import com.google.android.gms.ads.identifier.AdvertisingIdClient.Info
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import java.io.IOException
 
-class Advertising(var context: Context, var txv: TextView) : AsyncTask<Void, Void, String>() {
+class Advertising(var context: Context, private val callback: (content: String) -> Unit) : AsyncTask<Void, Void, String>() {
+
+    var delegate: String = ""
+
     override fun doInBackground(vararg params: Void?): String? {
         var adInfo: Info
         try {
@@ -30,8 +32,8 @@ class Advertising(var context: Context, var txv: TextView) : AsyncTask<Void, Voi
         // ...
     }
 
-    override fun onPostExecute(result: String?) {
+    override fun onPostExecute(result: String) {
         super.onPostExecute(result)
-        txv.text = result
+        callback(result)
     }
 }
