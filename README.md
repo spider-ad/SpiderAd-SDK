@@ -55,7 +55,7 @@ val adview = AdView(this, adContainer, "divSpdStandardBanner")
 adview.initialize()
 ```
 
-##Support
+## Support
 
 Send email to devteam@spider.ad
 
