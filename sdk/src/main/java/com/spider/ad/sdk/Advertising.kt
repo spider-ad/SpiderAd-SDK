@@ -9,8 +9,6 @@ import java.io.IOException
 
 class Advertising(var context: Context, private val callback: (content: String) -> Unit) : AsyncTask<Void, Void, String>() {
 
-    var delegate: String = ""
-
     override fun doInBackground(vararg params: Void?): String? {
         var adInfo: Info
         try {
