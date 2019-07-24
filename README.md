@@ -6,7 +6,7 @@ SDK android for publish advertising from SpiderAd
 
  Add it in your root build.gradle at the end of repositories:
 
-```json
+```
 allprojects {        
     repositories {
         ...
@@ -16,7 +16,7 @@ allprojects {
 ```
  Add the dependency
 
-```json
+```
 dependencies {
     ...
     implementation 'com.github.spider-ad:SpiderAd-SDK-Android:0.1.1'
