@@ -8,11 +8,10 @@
              android:orientation="vertical">
 
     <Button
-        android:id="@+id/closeAdStdBanner"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="right"
-        android:textSize="10dp"
-        android:textAlignment="center"
-        android:text="X"/>
+            android:id="@+id/closeAdStdBanner"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/btn_close"
+            android:layout_gravity="right"/>
 </FrameLayout>
