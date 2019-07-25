@@ -24,35 +24,71 @@ dependencies {
 ```
  
 ## Usage
- Add afiiliate id in AndroidManifest.xml
+ Add affiliate id in AndroidManifest.xml
 
 ```xml
 <meta-data
     android:name="com.spider.ad.sdk.AdView.AFFILIATE_ID"
     android:value="9999"/>
 ```
+ - OBS: Affiliate id is your identification on SpiderAd 
     
-Insert layout in activity for publish advertising
-
- - Banner 300X50
+#### Publish advertising on format 300X50
+Insert layout in activity 
      
 ```xml
-<LinearLayout
-    android:id="@+id/adview"
-    android:layout_width="300dp"
-    android:layout_height="50dp"
-    android:layout_alignParentBottom="true"
-    android:orientation="horizontal"
-    android:layout_centerInParent="true"></LinearLayout>         
+<include layout="@layout/spd_standard_banner">
+</include>
 ```
     
 Add code in onCreate function from activity 
 
 ```kotlin
-val adContainer = findViewById(R.id.adview) as LinearLayout
+...
+import com.spider.ad.sdk.AdView
 
-val adview = AdView(this, adContainer, "divSpdStandardBanner")
-adview.initialize()
+...
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    
+    // On close button
+    val adViewStdBanner = AdView(this, "divSpdStandardBanner")
+    adviewStdBanner.initialize()
+
+    // No close button
+    val adViewStdBanner = AdView(this, "divSpdStandardBanner", false)
+    adviewStdBanner.initialize()    
+}
+```
+
+#### Publish advertising on format 300X250
+Insert layout in activity
+
+```xml
+ <include layout="@layout/spd_retangulo">
+</include>
+```
+
+Add code in onCreate function from activity 
+
+```kotlin
+...
+import com.spider.ad.sdk.AdView
+
+...
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    
+    // On close button
+    val adviewRetangulo = AdView(this, "divSpdRetangulo")
+    adviewRetangulo.initialize()
+
+    // No close button
+    val adviewRetangulo = AdView(this, "divSpdRetangulo", false)
+    adviewRetangulo.initialize()
+}
 ```
 
 ## Support

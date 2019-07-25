@@ -1,17 +1,40 @@
 package com.spider.ad.sdk
 
+import android.app.Activity
 import android.content.Context
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.content.pm.PackageManager
 import android.util.Log
+import android.view.View
+import android.widget.Button
 
 
+class AdView(var context: Context, val adFormat: String, val closeBtn: Boolean = true) {
 
-class AdView(var context: Context, var adContainer: ViewGroup, val adFormat: String) {
+    lateinit var spdWebView: WebView
+    private val adContainer: ViewGroup
+    private val btnCloseAd: Button
 
-    lateinit var spdWebView : WebView
-    var url = "https://s3.amazonaws.com/exemplos.spider.ad/spider_sdk/banner_arroba.html"
+    var url = "https://s3.amazonaws.com/sdk.spider.ad/ad.html"
+
+    init {
+        if (adFormat == "divSpdRetangulo") {
+            adContainer = (context as Activity).findViewById(R.id.adviewRetangulo) as ViewGroup
+            btnCloseAd = (context as Activity).findViewById(R.id.closeAdRetangulo) as Button
+        } else {
+            adContainer = (context as Activity).findViewById(R.id.adviewStdBanner) as ViewGroup
+            btnCloseAd = (context as Activity).findViewById(R.id.closeAdStdBanner) as Button
+        }
+
+        if (closeBtn) {
+            btnCloseAd.setOnClickListener {
+                adContainer.visibility = View.INVISIBLE
+            }
+        } else {
+            btnCloseAd.visibility = View.INVISIBLE
+        }
+    }
 
     fun initialize() {
         GeoLocation(context, ::getGeoLocationCallback).geoLocation()
